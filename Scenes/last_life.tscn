@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpy4c5bjnec7"]
+
+[ext_resource type="Texture2D" uid="uid://d2pionp3cdquy" path="res://prototyping_assets/Tiles/3heart.png" id="1_657ps"]
+
+[node name="LastLife" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3705, 336)
+scale = Vector2(-16.29, 14.185)
+texture = ExtResource("1_657ps")

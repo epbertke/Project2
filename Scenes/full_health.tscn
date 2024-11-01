@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw10vtavb680m"]
+
+[ext_resource type="Texture2D" uid="uid://bi15kavtx1607" path="res://prototyping_assets/Tiles/heart.png" id="1_2sjxb"]
+
+[node name="FullHealth" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3705, 336)
+scale = Vector2(-16.2901, 14.1849)
+texture = ExtResource("1_2sjxb")

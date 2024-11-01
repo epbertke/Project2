@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://8ypa77bdknlp"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_2hsk8"]
+[ext_resource type="Texture2D" uid="uid://cmfs8uvyoq7ji" path="res://prototyping_assets/Characters/character_0024.png" id="2_rf6sj"]
+[ext_resource type="Texture2D" uid="uid://cvryedinrj66t" path="res://prototyping_assets/Characters/character_0025.png" id="3_bsehg"]
+[ext_resource type="Texture2D" uid="uid://l7oq2bpktbt1" path="res://prototyping_assets/Characters/character_0026.png" id="4_eufm6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qphha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rf6sj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bsehg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eufm6")
+}],
+"loop": false,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jf2e5"]
+radius = 5.0
+height = 10.0
+
+[node name="Enemy" type="Area2D"]
+position = Vector2(1020, 384)
+script = ExtResource("1_2hsk8")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qphha")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_jf2e5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
