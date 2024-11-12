@@ -14,5 +14,6 @@ func _process(delta):
 func _on_body_entered(body):
 	var controller = $"../GameController"
 	controller.addScore()
+	$"../sfx/collect".play()
 	print("score increased")
 	queue_free()

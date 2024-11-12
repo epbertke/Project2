@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://d14wbicthijbi"]
+[gd_scene load_steps=19 format=4 uid="uid://d14wbicthijbi"]
 
 [ext_resource type="Texture2D" uid="uid://cx2k3bnx82hp4" path="res://prototyping_assets/Tiles/sky.png" id="1_ytyyv"]
 [ext_resource type="TileSet" uid="uid://drrvyxsnjvk7b" path="res://Scenes/new_tile_set.tres" id="2_vnb20"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bntx7yqiw1fp4" path="res://prototyping_assets/Characters/character_0013.png" id="7_7tl24"]
 [ext_resource type="Texture2D" uid="uid://ypwm6dnuygr2" path="res://prototyping_assets/Characters/character_0014.png" id="8_32jqq"]
 [ext_resource type="Texture2D" uid="uid://c18je85gy3kvm" path="res://prototyping_assets/Item/tile_0028.png" id="9_jv1r8"]
+[ext_resource type="AudioStream" uid="uid://dfkki5oon0fy7" path="res://prototyping_assets/game sounds/jump.tres" id="10_xr7jg"]
+[ext_resource type="AudioStream" uid="uid://depj105yvyu1s" path="res://prototyping_assets/game sounds/new_audio_stream2_ogg_vorbis.tres" id="11_vn360"]
+[ext_resource type="AudioStream" uid="uid://bcs5ncx82ikch" path="res://prototyping_assets/game sounds/collect.tres" id="12_chdo4"]
+[ext_resource type="AudioStream" uid="uid://bryopa4jh6mye" path="res://prototyping_assets/game sounds/new_audio_stream_ogg_vorbis.tres" id="13_0b6s4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_322eq"]
 animations = [{
@@ -121,5 +125,22 @@ scale = Vector2(0.92, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "You win.
 Welcome to your mountain vacation."
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="jump" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("10_xr7jg")
+
+[node name="crush" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("11_vn360")
+volume_db = 12.0
+
+[node name="collect" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("12_chdo4")
+
+[node name="walk" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("13_0b6s4")
+volume_db = 4.0
+pitch_scale = 4.0
 
 [connection signal="body_entered" from="Interact2" to="Player" method="_on_interact_2_body_entered"]

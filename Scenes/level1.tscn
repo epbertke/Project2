@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://bhcaup6f5wm1f"]
+[gd_scene load_steps=59 format=4 uid="uid://bhcaup6f5wm1f"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gkg6g"]
 [ext_resource type="Texture2D" uid="uid://cftkucbjcs7qj" path="res://prototyping_assets/Characters/character_0004.png" id="2_jdtcp"]
@@ -32,6 +32,10 @@
 [ext_resource type="Script" path="res://Scenes/key.gd" id="28_wlki4"]
 [ext_resource type="Texture2D" uid="uid://b02023v13gedl" path="res://prototyping_assets/Item/tile_0027.png" id="29_5hkvc"]
 [ext_resource type="TileSet" uid="uid://bhl4fq66hxhjw" path="res://Scenes/laddertiles.tres" id="30_bjkx6"]
+[ext_resource type="AudioStream" uid="uid://dfkki5oon0fy7" path="res://prototyping_assets/game sounds/jump.tres" id="33_41ekm"]
+[ext_resource type="AudioStream" uid="uid://depj105yvyu1s" path="res://prototyping_assets/game sounds/new_audio_stream2_ogg_vorbis.tres" id="33_qhd4e"]
+[ext_resource type="AudioStream" uid="uid://bryopa4jh6mye" path="res://prototyping_assets/game sounds/new_audio_stream_ogg_vorbis.tres" id="33_qq7y3"]
+[ext_resource type="AudioStream" uid="uid://bcs5ncx82ikch" path="res://prototyping_assets/game sounds/collect.tres" id="34_gi1kc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w5kr0"]
 animations = [{
@@ -5401,6 +5405,23 @@ offset_bottom = -58.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 metadata/_edit_use_anchors_ = true
+
+[node name="sfx" type="Node2D" parent="Level"]
+
+[node name="jump" type="AudioStreamPlayer2D" parent="Level/sfx"]
+stream = ExtResource("33_41ekm")
+
+[node name="crush" type="AudioStreamPlayer2D" parent="Level/sfx"]
+stream = ExtResource("33_qhd4e")
+volume_db = 12.0
+
+[node name="collect" type="AudioStreamPlayer2D" parent="Level/sfx"]
+stream = ExtResource("34_gi1kc")
+
+[node name="walk" type="AudioStreamPlayer2D" parent="Level/sfx"]
+stream = ExtResource("33_qq7y3")
+volume_db = 4.0
+pitch_scale = 4.0
 
 [connection signal="crushed" from="Level/Player" to="Level/Enemy" method="_on_player_crushed"]
 [connection signal="crushed2" from="Level/Player" to="Level/Enemy2" method="_on_player_crushed_2"]

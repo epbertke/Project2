@@ -15,8 +15,10 @@ func _process(delta):
 	
 	if abs(velocity.x) > .1 and $AnimatedSprite2D.animation != "walk":
 		$AnimatedSprite2D.play("walk")
+		$"../sfx/walk".play()
 	elif abs(velocity.x) < .1 and $AnimatedSprite2D.animation != "idle":
 		$AnimatedSprite2D.play("idle")
+		$"../sfx/walk".stop()
 		
 		
 	if(velocity.x > 0):
@@ -31,6 +33,7 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$"../sfx/jump".play()
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -49,10 +52,9 @@ func _on_enemy_body_entered(body: Node2D) -> void:
 	if velocity.y > 0:
 		crushed.emit()
 		controller.addScore()
+		$"../sfx/crush".play()
 	else:
 		controller.depleteHealth()
-
-
 
 
 
@@ -74,6 +76,8 @@ func _on_enemy_2_body_entered(body: Node2D) -> void:
 	if velocity.y > 0:
 		crushed2.emit()
 		controller.addScore()
+		$"../sfx/crush".play()
+		
 	else:
 		controller.depleteHealth()
 
@@ -83,6 +87,7 @@ func _on_enemy_3_body_entered(body: Node2D) -> void:
 	if velocity.y > 0:
 		crushed3.emit()
 		controller.addScore()
+		$"../sfx/crush".play()
 	else:
 		controller.depleteHealth()
 

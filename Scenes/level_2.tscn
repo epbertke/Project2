@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://budm2qc060l6j"]
+[gd_scene load_steps=50 format=4 uid="uid://budm2qc060l6j"]
 
 [ext_resource type="Texture2D" uid="uid://b3toc4kbm3cyw" path="res://prototyping_assets/Tiles/grass.png" id="1_gv3eu"]
 [ext_resource type="Texture2D" uid="uid://chgw6i58ombuk" path="res://prototyping_assets/Tiles/dirt.png" id="2_l1y7a"]
@@ -28,6 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://ypwm6dnuygr2" path="res://prototyping_assets/Characters/character_0014.png" id="26_mjwvi"]
 [ext_resource type="Texture2D" uid="uid://c18je85gy3kvm" path="res://prototyping_assets/Item/tile_0028.png" id="27_tsyes"]
 [ext_resource type="Texture2D" uid="uid://74ddfx3wmqsi" path="res://prototyping_assets/Item/npc2 2.png" id="28_p75ut"]
+[ext_resource type="AudioStream" uid="uid://dfkki5oon0fy7" path="res://prototyping_assets/game sounds/jump.tres" id="29_ivwg8"]
+[ext_resource type="AudioStream" uid="uid://depj105yvyu1s" path="res://prototyping_assets/game sounds/new_audio_stream2_ogg_vorbis.tres" id="30_jxnhu"]
+[ext_resource type="AudioStream" uid="uid://bcs5ncx82ikch" path="res://prototyping_assets/game sounds/collect.tres" id="31_lgypv"]
+[ext_resource type="AudioStream" uid="uid://bryopa4jh6mye" path="res://prototyping_assets/game sounds/new_audio_stream_ogg_vorbis.tres" id="32_r84fj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vb78x"]
 texture = ExtResource("1_gv3eu")
@@ -5353,6 +5357,23 @@ shape = SubResource("RectangleShape2D_61b2r")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Level3SwitchArea"]
 position = Vector2(1668, 213)
 shape = SubResource("RectangleShape2D_61b2r")
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="jump" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("29_ivwg8")
+
+[node name="crush" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("30_jxnhu")
+volume_db = 12.0
+
+[node name="collect" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("31_lgypv")
+
+[node name="walk" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("32_r84fj")
+volume_db = 4.0
+pitch_scale = 4.0
 
 [connection signal="body_entered" from="Enemy" to="Player" method="_on_enemy_body_entered"]
 [connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]
